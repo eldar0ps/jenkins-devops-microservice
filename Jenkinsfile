@@ -10,6 +10,7 @@ pipeline {
 		mavenHome = tool 'myMaven'
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
 	}
+}
 
 
 	stages {
@@ -83,5 +84,4 @@ pipeline {
 			echo 'I run when you fail'
 		}
 	}
-}
 }
