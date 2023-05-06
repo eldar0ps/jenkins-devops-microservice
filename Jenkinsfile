@@ -11,7 +11,6 @@ pipeline {
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
 	}
 }
-}
 
 
 	stages {
@@ -73,7 +72,6 @@ pipeline {
 			}
 		}
 	}
-	}
 
 	post {
 		always {
@@ -86,3 +84,4 @@ pipeline {
 			echo 'I run when you fail'
 		}
 	}
+}
