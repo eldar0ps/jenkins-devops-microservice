@@ -10,10 +10,8 @@ pipeline {
 		mavenHome = tool 'myMaven'
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
 	}
-}
 
-
-	stages {
+    stages {
 		stage('Checkout') {
 			steps {
 		        sh 'mvn --version'
@@ -27,7 +25,6 @@ pipeline {
 				echo "BUILD_URL - $env.BUILD_URL"
 			}
 		}
-
         stage('Compile') {
 			steps {
 				sh "mvn clean compile"
@@ -39,7 +36,7 @@ pipeline {
 				sh "mvn test"
 			}
 		}
-
+        
 		stage('Integration Test') {
 			steps {
 		        sh "mvn failsafe:integration-test failsafe:verify"
@@ -66,12 +63,13 @@ pipeline {
 		    steps {
 				script {
 					docker.withRegistry('', 'dockerhub') {
-					dockerImage.push();
-					dockerImage.push('latest');
-				}
-			}
-		}
-	}
+					    dockerImage.push();
+					    dockerImage.push('latest');
+				   }
+			    }
+		    }
+	    }
+    }   
 
 	post {
 		always {
