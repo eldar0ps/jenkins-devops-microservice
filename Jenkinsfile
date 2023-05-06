@@ -51,7 +51,7 @@ pipeline {
 			}
 		}
 
-		stage ('Build Docker Image')
+		stage ('Build Docker Image') {
 		    steps {
 			//"docker build -t eldarops/currency-exchange-devops:$env.BUILD_TAG"
 			script {
